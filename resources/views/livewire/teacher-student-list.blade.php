@@ -1,4 +1,4 @@
-<div class="bg-white shadow overflow-hidden sm:rounded-md">
+<div class="bg-white shadow sm:rounded-md">
     <ul role="list" class="divide-y divide-gray-200">
         @foreach($students as $student)
         <li>
@@ -15,6 +15,38 @@
                                         Word Count: {{ str_word_count($student->first_writing) }}
                                     </p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div x-data="{ tooltip: false }" class="relative z-30 inline-flex">
+                            <a x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" href="#" class="flex-shrink-0 pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  {{ $student->first_writing ? 'text-green-500' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </a>
+                            <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                                <div class="absolute top-0 z-10 w-40 p-2 -mt-1 text-sm leading-tight text-white transform -translate-x-1/2 -translate-y-full bg-orange-500 rounded-lg shadow-lg">
+                                    Writing Sample One  {{ $student->first_writing ? 'Complete' : '' }}
+                                </div>
+                                <svg class="absolute z-10 w-6 h-6 text-orange-500 transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                    <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div x-data="{ tooltip: false }" class="relative z-30 inline-flex">
+                            <a x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" href="#" class="flex-shrink-0 pr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 {{ $student->second_writing ? 'text-green-400' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </a>
+                            <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                                <div class="absolute top-0 z-10 w-40 p-2 -mt-1 text-sm leading-tight text-white transform -translate-x-1/2 -translate-y-full bg-orange-500 rounded-lg shadow-lg">
+                                    Writing Sample Two  {{ $student->second_writing ? 'Complete' : '' }}
+                                </div>
+                                <svg class="absolute z-10 w-6 h-6 text-orange-500 transform -translate-x-12 -translate-y-3 fill-current stroke-current" width="8" height="8">
+                                    <rect x="12" y="-10" width="8" height="8" transform="rotate(45)" />
+                                </svg>
                             </div>
                         </div>
                     </div>
