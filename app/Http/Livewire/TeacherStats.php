@@ -15,6 +15,7 @@ class TeacherStats extends Component
     public function mount()
     {
         $this->studentCount = Student::where('user_id', '=', \Auth::user()->id)->count();
+        $this->writingCount = Student::where('user_id', '=', \Auth::user()->id)->pluck('first_writing')->whereNotNull()->count();
     }
 
     public function render()
