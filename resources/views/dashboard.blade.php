@@ -8,9 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:teacher-stats/>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <livewire:teacher-details/>
+            <div class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+                <div class="space-y-6 lg:col-start-1 lg:col-span-2">
                     <livewire:teacher-student-list/>
                 </div>
             </div>

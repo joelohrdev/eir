@@ -34,7 +34,7 @@ class GoogleSocialiteController extends Controller
                 ]);
                 Auth::login($newUser);
             }
-            return redirect('/');
+            return redirect('/dashboard');
         } catch (Exception $e) {
             dd($e->getMessage());
         }
