@@ -20,11 +20,11 @@
                     </div>
                     <div class="flex">
                         <div x-data="{ tooltip: false }" class="relative z-30 inline-flex">
-                            <a x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" href="#" class="flex-shrink-0 pr-2">
+                            <button onclick="Livewire.emit('openModal', 'writing-sample-modal')" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="flex-shrink-0 pr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  {{ $student->first_writing ? 'text-green-500' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
-                            </a>
+                            </button>
                             <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
                                 <div class="absolute top-0 z-10 w-40 p-2 -mt-1 text-sm leading-tight text-white transform -translate-x-1/2 -translate-y-full bg-orange-500 rounded-lg shadow-lg">
                                     Writing Sample One  {{ $student->first_writing ? 'Complete' : '' }}
@@ -35,11 +35,11 @@
                             </div>
                         </div>
                         <div x-data="{ tooltip: false }" class="relative z-30 inline-flex">
-                            <a x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" href="#" class="flex-shrink-0 pr-2">
+                            <button onclick="Livewire.emit('openModal', 'writing-sample-modal')" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="flex-shrink-0 pr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 {{ $student->second_writing ? 'text-green-400' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
-                            </a>
+                            </button>
                             <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
                                 <div class="absolute top-0 z-10 w-40 p-2 -mt-1 text-sm leading-tight text-white transform -translate-x-1/2 -translate-y-full bg-orange-500 rounded-lg shadow-lg">
                                     Writing Sample Two  {{ $student->second_writing ? 'Complete' : '' }}
