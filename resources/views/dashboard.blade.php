@@ -10,7 +10,10 @@
             <livewire:teacher-stats/>
             <div class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
                 <div class="space-y-6 lg:col-start-1 lg:col-span-2">
-                    <livewire:teacher-student-list/>
+                    <livewire:teacher-student-list />
+                </div>
+                <div class="lg:col-start-3 lg:col-span-1">
+                    <livewire:note-list />
                 </div>
             </div>
         </div>
