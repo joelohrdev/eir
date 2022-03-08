@@ -8,10 +8,6 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
-    public function fileImportExport()
-    {
-        return view('file-import');
-    }
 
     public function fileImport(Request $request)
     {
