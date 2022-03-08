@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoogleSocialiteController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +25,8 @@ Route::get('/dashboard', function () {
 
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
+
+Route::get('/file-import-export', [StudentController::class, 'fileImportExport']);
+Route::get('/student-import', [StudentController::class, 'fileImport'])->name('student-import');
 
 require __DIR__.'/auth.php';

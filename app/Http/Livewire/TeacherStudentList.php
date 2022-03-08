@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Student;
 use Livewire\Component;
 use Auth;
+use Livewire\WithPagination;
 
 class TeacherStudentList extends Component
 {
+    use WithPagination;
+
     public $student;
 
     protected $listeners = ['firstWritingAdded'];
@@ -25,7 +28,7 @@ class TeacherStudentList extends Component
     public function render()
     {
         return view('livewire.teacher-student-list', [
-            'students' => Student::where('user_id', '=', Auth::user()->id)->get()
+            'students' => Student::where('user_id', '=', Auth::user()->id)->paginate(10)
         ]);
     }
 }
