@@ -41,6 +41,8 @@ class SingleStudent extends Component
             'first_writing' => $this->content
         ]);
 
+        $this->showWritingModel = false;
+
     }
 
     public function render()
