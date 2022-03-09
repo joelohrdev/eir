@@ -13,7 +13,7 @@
                     <livewire:teacher-student-list />
                 </div>
                 <div class="lg:col-start-3 lg:col-span-1">
-{{--                    <livewire:note-list />--}}
+                    <livewire:note-list />
                 </div>
             </div>
         </div>

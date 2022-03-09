@@ -27,7 +27,7 @@
                         </div>
                     @else
                         <div class="relative inline-flex">
-                            <button onclick="$modals.show('sample-one-modal')" class="flex-shrink-0 pr-2" type="button" x-on:click="window.livewire.emitTo('sample-one-modal', 'show')">
+                            <button wire:click="editSampleOne" class="flex-shrink-0 pr-2" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  {{ $student->first_writing ? 'text-green-500' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
@@ -55,4 +55,21 @@
             </div>
         </div>
     </li>
+    <form wire:submit.prevent="addSampleOne" wire:ignore>
+    <x-dialog-modal wire:model.defer="showWritingModel">
+        <x-slot name="title">Add First Writing Sample for {{ $student->first_name }}</x-slot>
+        <x-slot name="content">
+            <div x-data="{ trix: @entangle('content').defer }">
+                <input wire:model.defer="writing" id="content" type="hidden" name="content" value="{{ $content }}" />
+                <div wire:ignore>
+                    <trix-editor x-model.debounce.300ms="trix"></trix-editor>
+                </div>
+            </div>
+        </x-slot>
+        <x-slot name="footer">
+            <x-secondary-button wire:click="$set('showWritingModel', false)" class="mr-3">Cancel</x-secondary-button>
+            <x-button type="submit">{{ __('Save') }}</x-button>
+        </x-slot>
+    </x-dialog-modal>
+    </form>
 </div>
