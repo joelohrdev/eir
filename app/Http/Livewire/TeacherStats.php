@@ -13,6 +13,10 @@ class TeacherStats extends Component
     public $writingCount;
     public $noteCount;
 
+    protected $listeners = [
+        'refreshComponent' => 'mount'
+    ];
+
     public function mount()
     {
         $this->studentCount = Student::where('user_id', '=', Auth::user()->id)->count();

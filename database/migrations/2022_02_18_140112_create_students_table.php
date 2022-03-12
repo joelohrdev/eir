@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->text('first_writing')->nullable();
+            $table->integer('first_writing_count')->nullable();
             $table->text('second_writing')->nullable();
+            $table->integer('second_writing_count')->nullable();
             $table->timestamps();
         });
     }

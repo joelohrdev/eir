@@ -59,17 +59,17 @@
     <x-dialog-modal wire:model.defer="showWritingModel">
         <x-slot name="title">Add First Writing Sample for {{ $student->first_name }}</x-slot>
         <x-slot name="content">
-            <div x-data="{ trix: @entangle('content').defer }">
-                <input wire:model.defer="writing" id="content" type="hidden" name="content" value="{{ $content }}" />
-                <div wire:ignore>
-                    <trix-editor x-model.debounce.300ms="trix"></trix-editor>
-                </div>
-            </div>
+            <livewire:create-writing-sample :student="$student"/>
         </x-slot>
         <x-slot name="footer">
             <x-secondary-button wire:click="$set('showWritingModel', false)" class="mr-3">Cancel</x-secondary-button>
             <x-button type="submit">{{ __('Save') }}</x-button>
         </x-slot>
     </x-dialog-modal>
+        @if (session()->has('message'))
+        <x-notification-success>
+            <x-slot name="messageToDisplay">{{ session('message') }}</x-slot>
+        </x-notification-success>
+        @endif
     </form>
 </div>

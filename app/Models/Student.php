@@ -9,7 +9,6 @@ use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 class Student extends Model
 {
     use HasFactory;
-    use HasTrixRichText;
 
     protected $fillable = [
         'user_id', 'first_name', 'last_name', 'first_writing', 'second_writing'

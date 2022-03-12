@@ -41,7 +41,11 @@ class SingleStudent extends Component
             'first_writing' => $this->content
         ]);
 
+        $this->emit('refreshComponent');
+
         $this->showWritingModel = false;
+
+        session()->flash('message', 'Post successfully updated.');
 
     }
 
