@@ -9,9 +9,4 @@ use Maatwebsite\Excel\Facades\Excel;
 class StudentController extends Controller
 {
 
-    public function fileImport(Request $request)
-    {
-        Excel::import(new StudentsImport, 'students.xlsx');
-        return view('welcome');
-    }
 }

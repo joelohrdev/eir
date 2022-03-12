@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teacher_infos', function (Blueprint $table) {
+        Schema::create('writing_samples', function (Blueprint $table) {
             $table->id();
-            $table->string('course_code');
-            $table->string('email')->unique();
-            $table->string('code')->unique();
-            $table->integer('grade');
+            $table->foreignId('student_id')->constrained();
+            $table->text('sample_one')->nullable();
+            $table->integer('sample_one_count')->default(0);
+            $table->text('sample_two')->nullable();
+            $table->integer('sample_two_count')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teacher_infos');
+        Schema::dropIfExists('writing_samples');
     }
 };

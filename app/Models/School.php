@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TeacherInfo extends Model
+class School extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'course_code',
-        'email',
-        'code',
-        'grade'
+        'name',
+        'code'
     ];
 
-    public function user()
+    public function courses()
     {
-        return $this->hasOne(TeacherInfo::class);
+        return $this->hasMany(Course::class);
     }
 }

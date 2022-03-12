@@ -11,7 +11,7 @@ class Student extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'first_name', 'last_name', 'first_writing', 'second_writing'
+        'teacher_code', 'first_name', 'last_name'
     ];
 
     public function User()
@@ -22,5 +22,10 @@ class Student extends Model
     public function note()
     {
         return $this->hasOne(Note::class);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
     }
 }
