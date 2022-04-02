@@ -29,8 +29,10 @@ class GoogleSocialiteController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'social_id' => $user->id,
-                    'social_type' => 'google',
-                    'password' => encrypt('my-google'),
+                    'school_code' => $validTeacher->school_code,
+                    'code' => $validTeacher->code,
+                    'grade' => $validTeacher->grade,
+                    'password' => encrypt('5eoi14i9PiYd'),
                 ]);
                 Auth::login($newUser);
             }

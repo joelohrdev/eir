@@ -3,47 +3,31 @@
 namespace App\Http\Livewire;
 
 use App\Models\Student;
-use Filament\Forms;
-use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\TextInput;
+use App\Models\User;
 use Livewire\Component;
-use Filament\Forms\Components\RichEditor;
 
-class CreateWritingSample extends Component implements Forms\Contracts\HasForms
+class CreateWritingSample extends Component
 {
-    use Forms\Concerns\InteractsWithForms;
 
     public Student $student;
     public $content;
+    public $teachers;
+    public $school_code;
+    public $body;
+    public $selectedTeachers;
 
-    public function mount() : void
+    public function mount()
     {
-        $this->form->fill([
-            'content' => $this->student->content
-        ]);
+        $this->school_code = \Auth::user()->pluck('school_code')->first();
+        $this->teachers = User::where('school_code', $this->school_code)->get();
     }
 
-    protected function getFormSchema(): array
+    public function save()
     {
-        return [
-            CheckboxList::make('Teachers', 'teachers')
-                ->options([
-                    'tailwind' => 'TailwindCSS',
-                    'alpine' => 'Alpine.js',
-                    'laravel' => 'Laravel',
-                    'livewire' => 'Laravel Livewire',
-                ])
-                ->columns(2),
-            RichEditor::make('Writing Sample', 'content')
-                ->disableAllToolbarButtons()
-                ->enableToolbarButtons([
-                    'bold',
-                    'bulletList',
-                    'italic',
-                ])
+//        dd($this->selectedTeachers, $this->body);
 
-        ];
     }
+
 
     public function render()
     {

@@ -10,14 +10,14 @@
                         <div class="hidden md:block">
                             <div>
                                 <p class="text-sm text-gray-900">
-                                    Word Count: {{ str_word_count($student->first_writing) }}
+                                    Word Count: {{ $wordCount }}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="flex">
-                    @if($student->first_writing)
+                    @if($sampleOne)
                         <div class="relative inline-flex">
                             <button class="flex-shrink-0 pr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -27,14 +27,14 @@
                         </div>
                     @else
                         <div class="relative inline-flex">
-                            <button wire:click="editSampleOne" class="flex-shrink-0 pr-2" type="button">
+                            <a href="{{ route('student.sampleOne', $student) }}" class="flex-shrink-0 pr-2" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  {{ $student->first_writing ? 'text-green-500' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
-                            </button>
+                            </a>
                         </div>
                     @endif
-                    @if($student->second_writing)
+                    @if($sampleTwo)
                         <div class="relative inline-flex">
                             <button class="flex-shrink-0 pr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,32 +44,15 @@
                         </div>
                     @else
                         <div class="relative inline-flex">
-                            <button class="flex-shrink-0 pr-2">
+                            <a href="{{ route('student.sampleTwo', $student) }}" class="flex-shrink-0 pr-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 {{ $student->second_writing ? 'text-green-400' : 'text-gray-400' }}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
-                            </button>
+                            </a>
                         </div>
                     @endif
                 </div>
             </div>
         </div>
     </li>
-    <form wire:submit.prevent="addSampleOne" wire:ignore>
-    <x-dialog-modal wire:model.defer="showWritingModel">
-        <x-slot name="title">Add First Writing Sample for {{ $student->first_name }}</x-slot>
-        <x-slot name="content">
-            <livewire:create-writing-sample :student="$student"/>
-        </x-slot>
-        <x-slot name="footer">
-            <x-secondary-button wire:click="$set('showWritingModel', false)" class="mr-3">Cancel</x-secondary-button>
-            <x-button type="submit">{{ __('Save') }}</x-button>
-        </x-slot>
-    </x-dialog-modal>
-        @if (session()->has('message'))
-        <x-notification-success>
-            <x-slot name="messageToDisplay">{{ session('message') }}</x-slot>
-        </x-notification-success>
-        @endif
-    </form>
 </div>

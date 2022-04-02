@@ -18,4 +18,5 @@
             </div>
         </div>
     </div>
+    <x-notification />
 </x-app-layout>

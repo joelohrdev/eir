@@ -16,7 +16,17 @@ class Student extends Model
 
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'teacher_code', 'code');
+    }
+
+    public function sampleOne()
+    {
+        return $this->hasOne(SampleOne::class);
+    }
+
+    public function sampleTwo()
+    {
+        return $this->hasOne(SampleTwo::class);
     }
 
     public function note()

@@ -13,6 +13,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/student/{student:id}/writing-sample-one', [StudentController::class, 'sampleOne'])
+    ->middleware(['auth'])
+    ->name('student.sampleOne');
+
+Route::get('/student/{student:id}/writing-sample-two', [StudentController::class, 'sampleTwo'])
+    ->middleware(['auth'])
+    ->name('student.sampleTwo');
+
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 

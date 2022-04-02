@@ -17,7 +17,7 @@ class Course extends Model
 
     public function school()
     {
-        return $this->belongsTo(School::class, 'code', 'code');
+        return $this->belongsTo(School::class, 'code', 'school_code');
     }
 
     public function teacher()

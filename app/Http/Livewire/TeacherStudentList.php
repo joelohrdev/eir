@@ -28,7 +28,7 @@ class TeacherStudentList extends Component
     public function render()
     {
         return view('livewire.teacher-student-list', [
-            'students' => Student::where('user_id', '=', Auth::user()->id)->paginate(10)
+            'students' => Student::where('teacher_code', '=', Auth::user()->code)->paginate(10)
         ]);
     }
 }

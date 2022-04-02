@@ -14,8 +14,8 @@ class School extends Model
         'code'
     ];
 
-    public function courses()
+    public function users()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(User::class, 'school_code', 'code');
     }
 }

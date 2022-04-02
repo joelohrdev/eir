@@ -1,5 +1,6 @@
 <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
     <div class="flow-root">
+        <button wire:click="showNotification">Show Modal</button>
         <ul role="list" class="-my-5 divide-y divide-gray-200">
             @forelse($notes as $note)
                 <li class="py-4">

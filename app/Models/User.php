@@ -22,7 +22,10 @@ class User extends Authenticatable
         'email',
         'password',
         'social_id',
-        'social_type',
+        'school_code',
+        'code',
+        'grade',
+        'is_admin',
     ];
 
     /**
@@ -44,14 +47,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function teacherInfo()
+    public function school()
     {
-        return $this->belongsTo(TeacherInfo::class);
+        return $this->belongsTo(School::class, 'school_code', 'code');
     }
 
     public function students()
     {
-        return $this->hasMany(Student::class);
+        return $this->hasMany(Student::class, 'teacher_code', 'code');
+    }
+
+    public function sampleOnes()
+    {
+        return $this->hasMany(SampleOne::class);
+    }
+
+    public function sampleTwos()
+    {
+        return $this->hasMany(SampleTwo::class);
     }
 
     public function note()

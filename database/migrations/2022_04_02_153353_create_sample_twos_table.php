@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('teacher_infos', function (Blueprint $table) {
+        Schema::create('sample_twos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('school_code');
-            $table->string('email')->unique();
-            $table->string('code')->unique();
-            $table->integer('grade');
-            $table->boolean('is_admin')->default(false);
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('student_id')->constrained();
+            $table->text('body');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teacher_infos');
+        Schema::dropIfExists('sample_twos');
     }
 };

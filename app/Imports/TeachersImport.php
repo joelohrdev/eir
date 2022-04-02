@@ -15,10 +15,11 @@ class TeachersImport implements ToModel
     public function model(array $row)
     {
         return new TeacherInfo([
-            'course_code' => $row[0],
+            'school_code' => $row[0],
             'email'     => $row[1],
             'code'      => $row[2],
             'grade'     => $row[3],
+            'is_admin'  => $row[4],
         ]);
     }
 }
